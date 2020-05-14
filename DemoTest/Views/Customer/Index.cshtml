@@ -1,0 +1,36 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Customer Id</th>
+            <th>Name</th>
+            <th>Birthday</th>
+            <th>Phone</th>
+            <th>Options</th>
+        </tr>
+        @foreach (var c in ViewBag.cs)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Name</td>
+                <td>@c.Birthday.ToString("yyyy-MM-dd")</td>
+                <td>@c.Phone</td>
+                <td>
+                    
+                    <a asp-controller="customer" asp-action="add">Add New Order</a> |
+                    <a asp-controller="orders" asp-action="index" asp-route-id="@c.Id">View Orders</a> |
+                    <a asp-controller="customer" asp-action="change" asp-route-id="@c.Id"
+                       onclick="return confirm('Are you sure?')">Change Profile</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

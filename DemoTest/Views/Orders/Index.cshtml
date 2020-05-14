@@ -1,0 +1,39 @@
+﻿
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Order Id</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Payments</th>
+            <th>Customer ID</th>
+            <th>Options</th>
+        </tr>
+        @foreach (var o in ViewBag.os)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.Name</td>
+                <td>@o.Datecreation.ToString("yyyy-MM-dd")</td>
+                <td>@o.Status</td>
+                <td>@o.Payments</td>
+                <td>@o.Customerid</td>
+                <td>                    
+                    <a asp-controller="orders" asp-action="delete" asp-route-id="@o.Id"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

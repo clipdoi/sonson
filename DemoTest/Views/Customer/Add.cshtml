@@ -1,0 +1,50 @@
+﻿@model DemoTest.ViewModels.OrdersViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <h3>Add Order</h3>
+    <form asp-controller="customer" asp-action="add" method="post">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" asp-for="orders.Name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Payments</td>
+                <td>
+                    <input type="radio" asp-for="orders.Payments" value="paypal" /> Paypal
+                    <input type="radio" asp-for="orders.Payments" value="cash" /> Cash
+                    <input type="radio" asp-for="orders.Payments" value="visa card" /> Visa Card
+                </td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    <input type="checkbox" asp-for="orders.Status" /> <!--orders.Status.Value neu nullable-->
+                </td>
+            </tr>
+            <tr>
+                <td>Customer</td>
+                <td>
+                    <select asp-for="orders.Customerid" asp-items="@Model.customers">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
